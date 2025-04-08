@@ -6,22 +6,25 @@ import { UserService } from './service/user.service';
 import { UserModule } from './user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true}),
+    TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
     port: 5432,
     password: 'postgres',
     username: 'postgres',
     entities: [],
-    database: 'pgWithNest',
+    database: 'moviebooker',
     synchronize: true,
     logging: true,
   }),
   UserModule],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {
     constructor(private dataSource: DataSource) {}

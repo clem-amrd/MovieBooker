@@ -13,11 +13,10 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const user_controller_1 = require("./controller/user.controller");
-const user_service_1 = require("./service/user.service");
 const user_module_1 = require("./user.module");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
     dataSource;
     constructor(dataSource) {
@@ -27,20 +26,23 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forRoot({
+        imports: [
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'localhost',
                 port: 5432,
                 password: 'postgres',
                 username: 'postgres',
                 entities: [],
-                database: 'pgWithNest',
+                database: 'moviebooker',
                 synchronize: true,
                 logging: true,
             }),
-            user_module_1.UserModule],
-        controllers: [app_controller_1.AppController, user_controller_1.UserController],
-        providers: [app_service_1.AppService, user_service_1.UserService],
+            user_module_1.UserModule
+        ],
+        controllers: [app_controller_1.AppController],
+        providers: [app_service_1.AppService],
     }),
     __metadata("design:paramtypes", [typeorm_2.DataSource])
 ], AppModule);

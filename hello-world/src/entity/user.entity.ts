@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-// import { UserRepository } from '../repository/user.repository'
 
 @Entity()
 export class User {
@@ -15,5 +14,4 @@ export class User {
   @Column()
   password: string;
 
-  // [EntityRepositoryType]?: UserRepository;
 }

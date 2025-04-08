@@ -4,7 +4,7 @@ import { JwtGuard } from '../jwt/jwt.guard';
 
 @Controller('movie')
 export class UserController {
-    constructor(private readonly userService: UserService) {  }
+    constructor() {  }
 
     @Get()
     @UseGuards(JwtGuard)

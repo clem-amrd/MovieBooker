@@ -8,10 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModule = void 0;
 const common_1 = require("@nestjs/common");
+const user_service_1 = require("./service/user.service");
+const user_controller_1 = require("./controller/user.controller");
+const user_entity_1 = require("./entity/user.entity");
+const typeorm_1 = require("@nestjs/typeorm");
+const jwt_1 = require("@nestjs/jwt");
+const config_1 = require("@nestjs/config");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
 exports.UserModule = UserModule = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.User]),
+            jwt_1.JwtModule.registerAsync({
+                inject: [config_1.ConfigService],
+                useFactory: (configService) => ({
+                    secret: configService.get('JWT_SECRET'),
+                    signOptions: { expiresIn: '1d' },
+                }),
+            }),],
+        providers: [user_service_1.UserService],
+        controllers: [user_controller_1.UserController],
+        exports: [user_service_1.UserService],
+    })
 ], UserModule);
 //# sourceMappingURL=user.module.js.map
