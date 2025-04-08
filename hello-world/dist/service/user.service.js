@@ -27,7 +27,7 @@ let UserService = class UserService {
         this.jwtService = jwtService;
     }
     async register(user) {
-        if (this.repo.findOneBy({ username: user.username }) !== undefined) {
+        if (!(this.repo.findOneBy({ email: user.email }))) {
             throw new common_1.BadRequestException("Email is already used");
         }
         let hashedPassword = await bcrypt.hash(user.password, 10);
@@ -50,6 +50,8 @@ let UserService = class UserService {
         return {
             access_token: await this.jwtService.signAsync({ email: user.email }),
         };
+    }
+    async logout() {
     }
 };
 exports.UserService = UserService;

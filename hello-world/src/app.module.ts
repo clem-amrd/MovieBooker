@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './controller/user.controller';
-import { UserService } from './service/user.service';
 import { UserModule } from './user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { User } from './entity/user.entity';
 
 @Module({
   imports: [
@@ -17,7 +15,7 @@ import { ConfigModule } from '@nestjs/config';
     port: 5432,
     password: 'postgres',
     username: 'postgres',
-    entities: [],
+    entities: [User],
     database: 'moviebooker',
     synchronize: true,
     logging: true,
@@ -26,6 +24,4 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-    constructor(private dataSource: DataSource) {}
-}
+export class AppModule {}

@@ -31,14 +31,14 @@ let UserController = class UserController {
 };
 exports.UserController = UserController;
 __decorate([
-    (0, common_1.Get)("/auth/register"),
+    (0, common_1.Post)("/auth/register"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [register_dto_1.RegisterDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "register", null);
 __decorate([
-    (0, common_1.Get)("/auth/login"),
+    (0, common_1.Post)("/auth/login"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_dto_1.LoginDto]),

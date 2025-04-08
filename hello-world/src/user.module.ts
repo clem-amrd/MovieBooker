@@ -19,6 +19,4 @@ import { ConfigService } from '@nestjs/config';
     controllers: [UserController],
     exports: [UserService],
   })
-export class UserModule {
-
-}
+export class UserModule {}

@@ -13,4 +13,5 @@ export declare class UserService {
     login(user: LoginDto): Promise<{
         access_token: string;
     }>;
+    logout(): Promise<void>;
 }

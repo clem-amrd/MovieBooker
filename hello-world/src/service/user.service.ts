@@ -17,7 +17,7 @@ export class UserService {
   ) { }
 
   async register(user: RegisterDto): Promise<{ access_token: string }> {
-    if (this.repo.findOneBy({ username: user.username }) !== undefined) {
+    if (!(this.repo.findOneBy({ email: user.email }))) {
       throw new BadRequestException("Email is already used")
     }
     let hashedPassword = await bcrypt.hash(user.password, 10);
@@ -41,6 +41,9 @@ export class UserService {
     return {
       access_token: await this.jwtService.signAsync({ email: user.email }),
     };
+  }
+
+  async logout(){
   }
 
 }
