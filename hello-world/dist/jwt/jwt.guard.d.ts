@@ -1,5 +1,10 @@
 import { CanActivate, ExecutionContext } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 export declare class JwtGuard implements CanActivate {
-    canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean>;
+    private jwtService;
+    private configService;
+    constructor(jwtService: JwtService, configService: ConfigService);
+    canActivate(context: ExecutionContext): Promise<boolean>;
+    private extractTokenFromHeader;
 }

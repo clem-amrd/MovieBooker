@@ -1,15 +1,15 @@
-import { Controller, Get, Body, UseGuards } from '@nestjs/common';
-import { UserService } from '../service/user.service';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { JwtGuard } from '../jwt/jwt.guard';
+import { MovieService } from 'src/service/movie.service';
 
-@Controller('movie')
-export class UserController {
-    constructor() {  }
+@Controller('movies')
+export class MovieController {
+    constructor(private readonly movieService: MovieService) {  }
 
-    @Get()
+    @Get(":query/:page")
     @UseGuards(JwtGuard)
-    test(){
-        return "test";
+    test(@Param('query') query: string, @Param('page') page: number,){
+        return this.movieService.findAll(query, page);
     }
 
 }
