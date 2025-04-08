@@ -1,0 +1,12 @@
+import { validate, validateOrReject, Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max, IsString} from 'class-validator';
+
+export class RegisterDto {
+    @IsString()
+    username: string;
+
+    @IsEmail()
+    email: string;
+  
+    @IsString()
+    password: string;
+  }

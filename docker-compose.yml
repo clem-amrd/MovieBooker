@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: nest-postgres
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: moviebooker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - moviebookerDB:/var/lib/postgresql/data
+
+volumes:
+  moviebookerDB:
