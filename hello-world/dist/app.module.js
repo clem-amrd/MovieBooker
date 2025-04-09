@@ -15,6 +15,8 @@ const typeorm_1 = require("@nestjs/typeorm");
 const config_1 = require("@nestjs/config");
 const user_entity_1 = require("./entity/user.entity");
 const movie_module_1 = require("./movie.module");
+const booking_module_1 = require("./booking.module");
+const booking_entity_1 = require("./entity/booking.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -31,14 +33,15 @@ exports.AppModule = AppModule = __decorate([
                     port: 5432,
                     password: 'postgres',
                     username: 'postgres',
-                    entities: [user_entity_1.User],
+                    entities: [user_entity_1.User, booking_entity_1.Booking],
                     database: 'moviebooker',
                     synchronize: true,
                     logging: true,
                 }),
             }),
             user_module_1.UserModule,
-            movie_module_1.MovieModule
+            movie_module_1.MovieModule,
+            booking_module_1.BookingModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -8,3 +8,4 @@ https://docs.nestjs.com/techniques/database
 https://dev.to/buildwithgagan/building-a-login-and-registration-system-using-nestjs-with-typeorm-and-postgresql-19hh
 https://docs.nestjs.com/techniques/configuration
 https://docs.nestjs.com/openapi/introduction
+https://github.com/typeorm/typeorm/issues/1221

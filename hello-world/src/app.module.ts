@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { User } from './entity/user.entity';
 import { MovieModule } from './movie.module';
+import { BookingModule } from './booking.module';
+import { Booking } from './entity/booking.entity';
 
 @Module({
   imports: [
@@ -19,15 +21,17 @@ import { MovieModule } from './movie.module';
         port: 5432,
         password: 'postgres',
         username: 'postgres',
-        entities: [User],
+        entities: [User, Booking],
         database: 'moviebooker',
         synchronize: true,
         logging: true,
       }),
     }),
-  UserModule,
-  MovieModule],
+    UserModule,
+    MovieModule,
+    BookingModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
