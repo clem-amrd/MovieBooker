@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity()
@@ -12,8 +12,8 @@ export class Booking {
   @Column()
   schedule: Date;
 
-  @ManyToMany(() => User, user => user.id)
-  @JoinColumn({ name: 'id' })
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
   user_id: number;
 
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { JwtGuard } from '../jwt/jwt.guard';
 import { MovieService } from 'src/service/movie.service';
 
@@ -6,10 +6,11 @@ import { MovieService } from 'src/service/movie.service';
 export class MovieController {
     constructor(private readonly movieService: MovieService) {  }
 
-    @Get(":query/:page")
+    @Get()
     @UseGuards(JwtGuard)
-    test(@Param('query') query: string, @Param('page') page: number,){
-        return this.movieService.findAll(query, page);
+    findAll(@Query('page') page?: number, @Query('query') query?: string){
+        console.log("test");
+        return this.movieService.findAll(query ?? '', page ?? 1);
     }
 
 }
