@@ -22,7 +22,7 @@ import { Booking } from './entity/booking.entity';
         password: config.get('DB_PASSWORD'),
         username: config.get('DB_USERNAME'),
         entities: [User, Booking],
-        database: config.get('DB_USERNAME'),
+        database: config.get('DB_NAME'),
         synchronize: true,
         logging: true,
       }),
