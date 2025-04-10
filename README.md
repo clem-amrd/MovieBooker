@@ -15,6 +15,13 @@ Accédez à l'application via `https://prolinker.onrender.com/`.
 
 Accédez à l'application via `https://harmonious-babka-a15569.netlify.app/` (C'est une page blanche, je ne sais pas pourquoi rien n'est visible et chargé, j'ai pas eu le temps de refaire d'autres deploiement)
 
+Voici a quoi il ressemble en local:
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+
 ## Technologies
 
 - **NestJS** pour le backend.
