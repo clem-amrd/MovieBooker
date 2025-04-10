@@ -24,9 +24,9 @@ export class UserService {
     }
     let hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
-    await this.repo.save(user);
+    const newUser = await this.repo.save(user);
     return {
-      access_token: await this.jwtService.signAsync({ email: user.email }),
+      access_token: await this.jwtService.signAsync({ id: newUser.id, email: newUser.email }),
     };
   }
 
@@ -41,7 +41,7 @@ export class UserService {
       throw new UnauthorizedException("Wrong password");
     }
     return {
-      access_token: await this.jwtService.signAsync({ email: user.email }),
+      access_token: await this.jwtService.signAsync({ id: userDb.id, email: userDb.email }),
     };
   }
 
