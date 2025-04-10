@@ -25,9 +25,9 @@ import { Booking } from './entity/booking.entity';
         database: config.get('DB_NAME'),
         synchronize: true,
         logging: true,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
       }),
     }),
     UserModule,
