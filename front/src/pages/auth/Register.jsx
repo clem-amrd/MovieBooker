@@ -27,8 +27,9 @@ export default function AuthRegister() {
     const success = await register(form);
     if (success) {
       navigate("/");
-    }
-  }
+    }else {
+      alert("Il y a déjà un compte associé à cette email");
+    }  }
 
   return (
     <Box

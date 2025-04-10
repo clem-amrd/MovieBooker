@@ -13,7 +13,7 @@ export function UserProvider({ children }) {
 
   async function register({ username, email, password }) {
     try {
-      const res = await axios.post("http://localhost:3000/user/auth/register", {
+      const res = await axios.post("https://prolinker.onrender.com/user/auth/register", {
         username,
         email,
         password,
@@ -34,7 +34,7 @@ export function UserProvider({ children }) {
 
   async function login({ email, password }) {
     try {
-      const res = await axios.post("http://localhost:3000/user/auth/login", {
+      const res = await axios.post("https://prolinker.onrender.com/user/auth/login", {
         email,
         password,
       });

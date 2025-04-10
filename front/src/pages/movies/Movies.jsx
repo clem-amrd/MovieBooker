@@ -9,7 +9,7 @@ const Movies = () => {
 
     const fetchMovies = async (page) => {
         try {
-            const response = await fetch(`http://localhost:3000/movies?page=${page}`, {
+            const response = await fetch(`https://prolinker.onrender.com/movies?page=${page}`, {
                 headers: {
                     Authorization: `Bearer ${user.access_token}`,
                     "Content-Type": "application/json",

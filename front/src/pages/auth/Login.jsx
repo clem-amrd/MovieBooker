@@ -24,7 +24,7 @@ export default function AuthLogin() {
     if (success) {
       navigate("/");
     } else {
-      alert("Erreur de login");
+      alert("L'email ou le mot de passe est incorrecte");
     }
   }
 
