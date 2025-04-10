@@ -2,7 +2,7 @@ import { Controller, Get, UseGuards, Body, Headers, Post, Delete, Param } from '
 import { JwtGuard } from '../jwt/jwt.guard';
 import { BookingService } from 'src/service/booking.service';
 import { saveBookingDto } from 'src/dto/saveBooking.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 @Controller('booking')
 export class BookingController {
@@ -10,6 +10,7 @@ export class BookingController {
 
     @Post()
     @UseGuards(JwtGuard)
+    @ApiBearerAuth()
     @ApiOperation({ summary: 'Create a reservation' })
     bookMovie(@Body() booking: saveBookingDto, @Headers('Authorization') token: string) {
         return this.bookingService.saveBooking(booking, token);
@@ -17,6 +18,7 @@ export class BookingController {
 
     @Get()
     @UseGuards(JwtGuard)
+    @ApiBearerAuth()
     @ApiOperation({ summary: 'Get all the reservations of the current user' })
     getBookings(@Headers('Authorization') token: string) {
         return this.bookingService.getBookings(token);
@@ -24,6 +26,7 @@ export class BookingController {
 
     @Delete(":id")
     @UseGuards(JwtGuard)
+    @ApiBearerAuth()
     @ApiOperation({ summary: 'Delete one of a current user\'s reservation' })
     deleteBooking(@Param('id') id: number, @Headers('Authorization') token: string) {
         return this.bookingService.deleteBooking(id, token);
