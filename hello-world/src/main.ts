@@ -8,6 +8,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('MovieBooker')
     .setDescription('This API allows you to create an account and log in, as well as search for a film or view available films. You can also reserve a film in advance.')
+    .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

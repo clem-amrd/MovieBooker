@@ -2,32 +2,29 @@ import { Controller, Get, UseGuards, Body, Headers, Post, Delete, Param } from '
 import { JwtGuard } from '../jwt/jwt.guard';
 import { BookingService } from 'src/service/booking.service';
 import { saveBookingDto } from 'src/dto/saveBooking.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('booking')
 export class BookingController {
     constructor(private readonly bookingService: BookingService) { }
 
-    /**
-    * Create a reservation
-    */
     @Post()
     @UseGuards(JwtGuard)
+    @ApiOperation({ summary: 'Create a reservation' })
     bookMovie(@Body() booking: saveBookingDto, @Headers('Authorization') token: string) {
         return this.bookingService.saveBooking(booking, token);
     }
-    /**
-    * Get all the reservations of the current user
-    */
+
     @Get()
     @UseGuards(JwtGuard)
+    @ApiOperation({ summary: 'Get all the reservations of the current user' })
     getBookings(@Headers('Authorization') token: string) {
         return this.bookingService.getBookings(token);
     }
-    /**
-    * Delete one of a current user's reservation
-    */
+
     @Delete(":id")
     @UseGuards(JwtGuard)
+    @ApiOperation({ summary: 'Delete one of a current user\'s reservation' })
     deleteBooking(@Param('id') id: number, @Headers('Authorization') token: string) {
         return this.bookingService.deleteBooking(id, token);
     }
